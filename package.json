@@ -1,0 +1,20 @@
+{
+  "name": "candels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chart.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^2.3.2",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "moment": "^2.24.0",
+    "papaparse": "^5.1.1",
+    "parser": "^0.1.4"
+  }
+}
