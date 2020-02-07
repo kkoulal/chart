@@ -22,13 +22,15 @@ Papa.parse("/csv/QuantRes.csv", {
 function	createGraph(data) {
 	
 	var ohlc = [];
-	var date = [];
+    var quant1 = [];
+    var quant2 = [];
+    var date = [];
 	var volume = [];
 	var datalen = data.length;
 
 	groupingUnits = [[
-		'minute',        // unit name
-		[1, 2, 5, 10, 15, 30]       // allowed multiples
+		'hour',        // unit name
+		[24]       // allowed multiples
 	], [
 		'hour',
 		[1, 2, 3, 4, 6, 8, 12,16 , 18, 20, 30]
@@ -63,7 +65,7 @@ function	createGraph(data) {
         },
 
         title: {
-            text: 'AAPL Historical'
+            text: 'Price Chart'
         },
 
         yAxis: [{
@@ -114,6 +116,70 @@ function	createGraph(data) {
             }
         }]
     });
+
+    for(var i = 0; i < datalen; i++){
+        quant1.push([
+        
+        parseFloat(data[i][5]), // QUANTUM50_Norm
+        
+
+    ]);
+}
+
+for(var i = 0; i < datalen; i++){
+    quant2.push([
+    
+    parseFloat(data[i][6]), // QUANTUM2R_Norm
+    
+
+]);
+}
+
+for(var i = 0; i < datalen; i++){
+    date.push([
+    
+    data[i][0], //date
+    
+
+]);
+}
+
+    Highcharts.chart('container1', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Indicators'
+        },
+    
+        xAxis: {
+            categories: date
+        },
+        yAxis: {
+            title: {
+                text: 'QUANTUM'
+                
+            }
+        },
+        
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: false
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'QUANTUM50_Norm',
+            data: quant1
+        }, {
+            name: 'QUANTUM2R_Norm',
+            data: quant2
+        }]
+    });
+
+
 	  
 	
 }
